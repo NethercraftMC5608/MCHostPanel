@@ -695,7 +695,7 @@ function base64_salt($len = 22) {
 	$characterList = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/';
 	$salt = '';
 	for($i=0;$i<$len;$i++)
-		$salt.= $characterList{mt_rand(0,(strlen($characterList)-1))};
+		$salt.= $characterList[mt_rand(0,(strlen($characterList)-1))];
 	return $salt;
 }
 
