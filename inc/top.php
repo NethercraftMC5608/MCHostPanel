@@ -8,7 +8,7 @@
 
 			<li><a href='userProfile.php'>Logged in as <strong><?php echo $user['user']; ?></strong></a></li>
 
-			<?php if($user['user']) { ?>
+			<?php if(false && $user['user']) { ?>
 				<li><img width="40" height="40" src="inc/getFace.php?username=<?php echo urlencode($user['user']); ?>" alt="<?php echo $user['user']; ?>"></li>
 			<?php } ?>
 

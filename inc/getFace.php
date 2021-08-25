@@ -1,5 +1,7 @@
 <?php
 
+die("-");
+
 $username = $_GET['username'];
 if(empty($username)) exit('No username specified.');
 
