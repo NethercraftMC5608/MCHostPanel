@@ -23,8 +23,6 @@ if(strpos($_REQUEST['file'], '..') !== false) {
 if (isset($_POST['text']) && !empty($_POST['file'])) {
 	$file = $user['home'] . $_POST['file'];
 	$text = $_POST['text'];
-	if (get_magic_quotes_gpc())
-		$text = stripslashes($text);
 	$saved = file_put_contents($file, $text);
 }
 
