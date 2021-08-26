@@ -427,14 +427,28 @@ function server_start($name) {
 			);
 		}
 
+		// Copy ngrok configuration if needed
+		if(isset($user['ngrok']) && !is_file($user['home'].$user['ngrok'])){
+			copy('serverbase/ngrok.yml', $user['home'].$user['ngrok']);
+		}
+		
 		// Launch server process in a detached GNU Screen
+		$start_jar=str_replace('/bin/bash', KT_JAR_START, KT_SCREEN_CMD_START);
+		$start_ngrok=str_replace('/bin/bash', KT_NGROK_START, KT_SCREEN_CMD_START);
+		
 		shell_exec(
 			'cd '.escapeshellarg($user['home']).'; '. // Change to server directory
 			sprintf(
-				str_replace('craftbukkit.jar', $jar, KT_SCREEN_CMD_START), // Base command
+				str_replace('craftbukkit.jar', $jar, $start_jar), // Base command
 				escapeshellarg(KT_SCREEN_NAME_PREFIX.$user['user']), // Screen Name
 				$user['ram']  // Maximum RAM
-			)
+			).'; '
+			.(isset($user['ngrok'])? //is ngrok port tunneling needed for this server?
+			sprintf(
+				str_replace('ngrok.yml', $user['ngrok'], $start_ngrok), // Base command
+				escapeshellarg(KT_SCREEN_NAME_PREFIX.$user['user'].'port'), // Screen Name
+				intval($user['port'])
+			):"")
 		);
 
 	}
