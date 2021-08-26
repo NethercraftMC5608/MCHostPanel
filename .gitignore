@@ -1,6 +1,11 @@
-data/config.php
+#installation
 .installed
 data/users
+data/config.php
 inc/skintmp
-u
+
+#server base files
 serverbase
+
+#user directory files
+u
