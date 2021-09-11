@@ -450,7 +450,7 @@ function server_cmd($name,$cmd) {
 		sprintf(
 			KT_SCREEN_CMD_EXEC, // Base command
 			KT_SCREEN_NAME_PREFIX.$name, // Screen Name
-			str_replace(array('\\','"'),array('\\\\','\\"'),(get_magic_quotes_gpc() ? stripslashes($cmd) : $cmd)) // Server command
+			str_replace(array('\\','"'),array('\\\\','\\"'),($cmd)) // Server command
 		)
 	);
 }
