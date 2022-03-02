@@ -74,5 +74,4 @@ if (!empty($_SESSION['user']) && $user = user_info($_SESSION['user'])) {
 		<button class="btn btn-primary" type="submit">Log In</button>
 	</div>
 </form>
-<small class="muted pull-left" style="position:absolute;bottom:15px;left:15px;">&copy; <?php echo date('Y'); ?> <a href="https://phpizza.com/">Alan Hardman</a></small>
 </body>
